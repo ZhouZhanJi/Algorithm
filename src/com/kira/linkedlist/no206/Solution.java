@@ -10,16 +10,28 @@ class ListNode {
 
 public class Solution {
     public ListNode reverseList(ListNode head) {
-        ListNode temp = null;
-        ListNode prev = null;
-        ListNode cur = head;
-        while(cur != null){
-            temp = cur.next;
-            cur.next = prev;
-            prev = cur;
-            cur = temp;
+//        ListNode temp = null;
+//        ListNode prev = null;
+//        ListNode cur = head;
+//        while(cur != null){
+//            temp = cur.next;
+//            cur.next = prev;
+//            prev = cur;
+//            cur = temp;
+//        }
+//        return prev;
+        return reverse(null, head);
+    }
+
+    ListNode reverse(ListNode pre, ListNode cur){
+        if(cur == null){
+            return pre;
         }
-        return prev;
+
+        ListNode temp = cur.next;
+        cur.next = pre;
+        return reverse(cur, temp);
+
     }
 
     public static ListNode batchCreate(int... vals) {
